@@ -94,6 +94,10 @@ Main:
 	; the angle into the "desired theta" variable.
 		
 	STORE  DTheta
+	CALL WAIT1
+	LOAD DTheta 
+	ADDI -8
+	STORE DTheta
 	
 	CALL WAIT1
 	LOADI  -200
@@ -110,32 +114,112 @@ checkState:	LOAD State1Checker
 checkStateEnd: LOAD Zero
 			   STORE DVel
 			   CALL WAIT1	
-;anotherRound:
-;	CALL WAIT1	   
-;	AND 0
-;	CALL FindClosest
-;	STORE DTheta
-		
+anotherRound:
+	CALL WAIT1	   
+	AND 0
+	CLI    &B0010 
+	CALL   AcquireData 
+	LOADI  0
+	STORE  DVel
+	IN     THETA
+	STORE  DTheta 
+	SEI    &B0010
+	CALL FindClosest
+	OUT SSEG2
+	STORE DTheta
+	CALL WAIT1
+	LOAD DTheta 
+	ADDI -8
+	STORE DTheta
+	
+	
 moveFoward:
 	AND 0
 	LOADI 300
 	STORE DVel
-	
+	LOAD Mask3
+	OUT SONAREN	
 forNow:	
-	IN dist3
-	ADDI -10
+	IN Dist3
+	OUT SSEG1
+	ADDI -254
+	JNEG EXIT1
+	JUMP forNow
 	
-	JNEG forNow
-	AND 0
+EXIT1:	LOADI 0
+	    STORE DVel   
+	    
+	CALL PingLeft
+	CALL PingRight 
+	LOAD LeftDist
+	ADD RightDist
+	OUT SSEG2 ;NOTE THIS DISTANCE IS NOT THE TOTAL DISTANCE -> it is the distance minus the width of the robot
+	ADDI -4000
+	JNEG Die
+	JPOS CASE1		
+			
+			
+; TWO CASES: 
+;SUM IS ABOVE 4000 milimeters
+;CASE1
+CASE1: 
+	LOADI 12
+	OUT SSEG1
+	LOADI 1
+	OUT SSEG2
+	CALL WAIT1
+	LOADI -300
 	STORE DVel
-		
-		
-InfLoop: 
+	LOADI 0
+	STORE State1Checker
+SecondMove: 
+	LOAD State1Checker
+	OUT SSEG2
+	ADDI -60
+	JPOS SecondExit
+	JUMP SecondMove
+SecondExit: LOADI 0
+			STORE DVel 
+			LOAD DTheta
+			ADDI 90
+			STORE DTheta
+	
+;SUM IS BELOW 4000 milimeters 
+;CASE2
+
+CASE2:
+	LOAD DTHETA
+	ADDI -180
+	
+
+
+
+
+
+InfLoop:                                 
 	JUMP   InfLoop
 	; note that the movement API will still be running during this
 	; infinite loop, because it uses the timer interrupt.
+PingLeft:
+	CALL WAIT1
+	LOAD Mask0
+	OUT SONAREN
+	CALL WAIT1
+	IN Dist0
+	STORE LeftDist
+	RETURN 
 	
-
+PingRight:
+	CALL WAIT1
+	LOAD Mask5
+	OUT SONAREN
+	CALL WAIT1
+	IN Dist5
+	STORE RightDist
+	RETURN 
+		
+LeftDist:	DW	0
+RightDist:	DW	0
 ; AcquireData will turn the robot counterclockwise and record
 ; 360 sonar values in memory.  The movement API must be disabled
 ; before calling this subroutine.
@@ -265,7 +349,6 @@ CTimer_ISR:
 	LOAD State1Checker
 	ADDI 1
 	STORE State1Checker
-	OUT SSEG1
 	RETI   ; return from ISR
 	
 	

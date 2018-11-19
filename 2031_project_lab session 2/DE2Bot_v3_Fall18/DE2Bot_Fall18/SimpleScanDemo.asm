@@ -152,15 +152,20 @@ EXIT1:	LOADI 0
 	LOAD LeftDist
 	ADD RightDist
 	STORE lrsum
-	;OUT SSEG2 ;NOTE THIS DISTANCE IS NOT THE TOTAL DISTANCE -> it is the distance minus the width of the robot
-	LOAD discase
+	SUB legdist ; will figure out later
+	JNEG CASE3LEG
+	LOAD lrsum
+	SUB case3val
+	JPOS CASE3POST
 	LOAD lrsum
 	SUB discase
 	JNEG CASE2
 	JPOS CASE1			
 
 lrsum: DW	0
+legdist: DW 1000 ;FIGURe OUT DISTANCE BETWEEN LEGS IN DeSKS
 discase: DW 4000
+case3val: DW 6000 ; DISTANCE BETWEEN CASE 1 PillaRS (PLEASE CheCK aCTUAL diSTANCE)
 CASE1: 
 	LOADI 193 ;C1 in hex
 	OUT SSEG1 ;Show that we're in C1
@@ -191,7 +196,13 @@ CASE2:
 	ADDI -172 ;always overrotates -> should correct
 	STORE DTHETA ; face that direction
 	JUMP FindHome
-	
+
+;CASE 3 - BETWEeN the leGS
+CASE3LEG: 
+	CALL DIE ;automatically die if in case 3
+;CASE 3 - SEES THE POST
+CASE3POST:
+	CALL DIE ;automatically die if in case 3
 ;Findhome	
 FindHome: 
 	CALL WAIT1
@@ -206,9 +217,8 @@ forNow1:
 	IN Dist5
 	STORE currPing
 	OUT SSEG1
-	LOAD RightDist
-	SUB currPing
-	SUB 500
+	SUB RightDist
+	ADD 250
 	OUT SSEG2
 	JNEG EXIT2
 	JUMP forNow1	
@@ -216,13 +226,13 @@ EXIT2:
 	LOADI 0
 	STORE Dvel
 	CALL WAIT1 ; prepare for velocity changed
-	LOADI  -200 ; reverse
+	LOADI  300 ; reverse
 	STORE DVel ;GO!
 	LOADI 0
 	STORE State1Checker
 checkState1:	LOAD State1Checker
 			OUT SSEG2
-			ADDI -40
+			ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
 			JPOS checkStateEnd1
 			JUMP checkState1
 checkStateEnd1: LOAD Zero

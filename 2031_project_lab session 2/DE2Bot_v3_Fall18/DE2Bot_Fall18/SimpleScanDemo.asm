@@ -93,15 +93,15 @@ Main:
 	; To turn to that angle using the movement API, just store
 	; the angle into the "desired theta" variable.
 		
-	STORE  DTheta
-	CALL WAIT1
+	STORE  DTheta ; look at closest reading 
+	CALL WAIT1 ; WAIT TO MAKE SURE VELOCITY RECORDS CHANGE
 	LOAD DTheta 
 	ADDI -8
-	STORE DTheta
+	STORE DTheta ; Add 8 degree offset to DTheta, seems to correct for most error 
 	
-	CALL WAIT1
-	LOADI  -200
-	STORE DVel 
+	CALL WAIT1 ; prepare for velocity changed
+	LOADI  -200 ; reverse
+	STORE DVel ;GO!
 	
 	LOADI 0
 	STORE State1Checker
@@ -125,7 +125,6 @@ anotherRound:
 	STORE  DTheta 
 	SEI    &B0010
 	CALL FindClosest
-	;OUT SSEG2
 	STORE DTheta
 	CALL WAIT1
 	LOAD DTheta 
@@ -155,23 +154,16 @@ EXIT1:	LOADI 0
 	STORE lrsum
 	;OUT SSEG2 ;NOTE THIS DISTANCE IS NOT THE TOTAL DISTANCE -> it is the distance minus the width of the robot
 	LOAD discase
-	;OUT SSEG1
-	;CALL WAIT1
 	LOAD lrsum
 	SUB discase
-	;OUT SSEG2
 	JNEG CASE2
-	JPOS CASE1		
-	;JUMP InfLoop		
+	JPOS CASE1			
 
 lrsum: DW	0
-discase: DW 4000			
-; TWO CASES: 
-;SUM IS ABOVE 4000 milimeters
-;CASE1
+discase: DW 4000
 CASE1: 
-	LOADI 193
-	OUT SSEG1
+	LOADI 193 ;C1 in hex
+	OUT SSEG1 ;Show that we're in C1
 	CALL WAIT1
 	LOADI -300
 	STORE DVel
@@ -179,7 +171,6 @@ CASE1:
 	STORE State1Checker
 SecondMove: 
 	LOAD State1Checker
-	;OUT SSEG2
 	ADDI -60  
 	JPOS SecondExit
 	JUMP SecondMove
@@ -194,37 +185,49 @@ SecondExit: LOADI 0
 ;CASE2
 
 CASE2:
-	LOADI 194
-	OUT SSEG1
-	LOAD DTHETA
-	ADDI -180
-	STORE DTHETA
-
+	LOADI 194 ;C2 in hex
+	OUT SSEG1 ;Show that we're in C2
+	LOAD DTHETA ;spin around
+	ADDI -172 ;always overrotates -> should correct
+	STORE DTHETA ; face that direction
+	JUMP FindHome
+	
+;Findhome	
 FindHome: 
-	;CALL PingRight
-	;STORE RightDist	
-	;OUT SSEG1
-	LOADI 300
-	STORE DVel
 	CALL WAIT1
 	LOAD Mask5
-	OUT SONAREN	
+	OUT SONAREN	;PING TO THE RIGHT
+	IN Dist5
+	OUT SSEG1
+	STORE RightDist
+	
 forNow1:	
 	CALL PingRight
-	CALL WAIT1
 	IN Dist5
-	;STORE currPing
+	STORE currPing
 	OUT SSEG1
-	;LOAD RightDist
-	;SUB currPing
+	LOAD RightDist
+	SUB currPing
 	SUB 500
 	OUT SSEG2
 	JNEG EXIT2
 	JUMP forNow1	
 EXIT2:	
-	;Dist5
-	;SUB 
-	CALL Die
+	LOADI 0
+	STORE Dvel
+	CALL WAIT1 ; prepare for velocity changed
+	LOADI  -200 ; reverse
+	STORE DVel ;GO!
+	LOADI 0
+	STORE State1Checker
+checkState1:	LOAD State1Checker
+			OUT SSEG2
+			ADDI -40
+			JPOS checkStateEnd1
+			JUMP checkState1
+checkStateEnd1: LOAD Zero
+			   STORE DVel
+			   JUMP InfLoop
 	
 
 
@@ -236,19 +239,19 @@ InfLoop:
 	; note that the movement API will still be running during this
 	; infinite loop, because it uses the timer interrupt.
 PingLeft:
-	CALL WAIT1
+	;CALL WAIT1
 	LOAD Mask0
 	OUT SONAREN
-	CALL WAIT1
+	;CALL WAIT1
 	IN Dist0
 	STORE LeftDist
 	RETURN 
 	
 PingRight:
-	CALL WAIT1
+	;CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN
-	CALL WAIT1
+	;CALL WAIT1
 	IN Dist5
 	STORE RightDist
 	RETURN 

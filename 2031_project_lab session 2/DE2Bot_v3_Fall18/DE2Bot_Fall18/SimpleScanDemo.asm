@@ -125,7 +125,7 @@ anotherRound:
 	STORE  DTheta 
 	SEI    &B0010
 	CALL FindClosest
-	OUT SSEG2
+	;OUT SSEG2
 	STORE DTheta
 	CALL WAIT1
 	LOAD DTheta 
@@ -141,8 +141,7 @@ moveFoward:
 	OUT SONAREN	
 forNow:	
 	IN Dist3
-	OUT SSEG1
-	ADDI -254
+	ADDI -300
 	JNEG EXIT1
 	JUMP forNow
 	
@@ -153,20 +152,26 @@ EXIT1:	LOADI 0
 	CALL PingRight 
 	LOAD LeftDist
 	ADD RightDist
-	OUT SSEG2 ;NOTE THIS DISTANCE IS NOT THE TOTAL DISTANCE -> it is the distance minus the width of the robot
-	ADDI -4000
-	JNEG Die
+	STORE lrsum
+	;OUT SSEG2 ;NOTE THIS DISTANCE IS NOT THE TOTAL DISTANCE -> it is the distance minus the width of the robot
+	LOAD discase
+	;OUT SSEG1
+	;CALL WAIT1
+	LOAD lrsum
+	SUB discase
+	;OUT SSEG2
+	JNEG CASE2
 	JPOS CASE1		
-			
-			
+	;JUMP InfLoop		
+
+lrsum: DW	0
+discase: DW 4000			
 ; TWO CASES: 
 ;SUM IS ABOVE 4000 milimeters
 ;CASE1
 CASE1: 
-	LOADI 12
+	LOADI 193
 	OUT SSEG1
-	LOADI 1
-	OUT SSEG2
 	CALL WAIT1
 	LOADI -300
 	STORE DVel
@@ -174,8 +179,8 @@ CASE1:
 	STORE State1Checker
 SecondMove: 
 	LOAD State1Checker
-	OUT SSEG2
-	ADDI -60
+	;OUT SSEG2
+	ADDI -60  
 	JPOS SecondExit
 	JUMP SecondMove
 SecondExit: LOADI 0
@@ -183,13 +188,43 @@ SecondExit: LOADI 0
 			LOAD DTheta
 			ADDI 90
 			STORE DTheta
+			JUMP FindHome
 	
 ;SUM IS BELOW 4000 milimeters 
 ;CASE2
 
 CASE2:
+	LOADI 194
+	OUT SSEG1
 	LOAD DTHETA
 	ADDI -180
+	STORE DTHETA
+
+FindHome: 
+	;CALL PingRight
+	;STORE RightDist	
+	;OUT SSEG1
+	LOADI 300
+	STORE DVel
+	CALL WAIT1
+	LOAD Mask5
+	OUT SONAREN	
+forNow1:	
+	CALL PingRight
+	CALL WAIT1
+	IN Dist5
+	;STORE currPing
+	OUT SSEG1
+	;LOAD RightDist
+	;SUB currPing
+	SUB 500
+	OUT SSEG2
+	JNEG EXIT2
+	JUMP forNow1	
+EXIT2:	
+	;Dist5
+	;SUB 
+	CALL Die
 	
 
 
@@ -220,6 +255,7 @@ PingRight:
 		
 LeftDist:	DW	0
 RightDist:	DW	0
+currPing:	DW	0
 ; AcquireData will turn the robot counterclockwise and record
 ; 360 sonar values in memory.  The movement API must be disabled
 ; before calling this subroutine.

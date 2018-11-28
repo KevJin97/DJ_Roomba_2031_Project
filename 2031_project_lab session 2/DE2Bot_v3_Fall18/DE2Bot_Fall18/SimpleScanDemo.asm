@@ -68,11 +68,11 @@ Main:
 	; configure timer interrupt for the movement control code
 	LOADI  10          ; period = (10 ms * 10) = 0.1s, or 10Hz.
 	OUT    CTIMER      ; turn on timer peripheral
-	
+
 	;;;; Demo code to acquire sonar data during a rotation
 	;CLI    &B0010      ; disable the movement API interrupt
 	;CALL   AcquireData ; perform a 360 degree scan
-	
+
 	;;;; Demo code to turn to face the closest object seen
 	; Before enabling the movement control code, set it to
 	; not start moving immediately.
@@ -88,49 +88,53 @@ Main:
 
 	; FindClosest returns the angle to the closest object
 
-
-;Findhome
-FindHome:
+Move:
     LOADI 300
     STORE DVel
-	CALL WAIT1
-	LOAD Mask5
-	OUT SONAREN	;PING TO THE RIGHT
-	CALL WAIT1
-	IN Dist5
-	OUT SSEG1
-	STORE RightDist
-	
-forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
-	CALL PingRight
-	IN Dist5
-	STORE currPing
-	OUT SSEG1
-	SUB RightDist
-	ADD 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
-	OUT SSEG2
-	JNEG EXIT2
-	JUMP forNow1	
-EXIT2:						;this is the state to drive foward to get into the HOME area
-	LOADI 0
-	STORE Dvel										;**********************************not sure why we need to stop
-	CALL WAIT1 ; prepare for velocity changed
-	LOADI  300 ; foward
-	STORE DVel ;GO!
-	LOADI 0
-	STORE State1Checker
-	
-checkState1:	
-	LOAD State1Checker
-	OUT SSEG2										; print 0 = right before getting home.
-	ADDI -30 ; EDIT VALuE AS NECeSSARY For MOVE
-	JPOS checkStateEnd1
-	JUMP checkState1
+    JUMP Move
 
-checkStateEnd1: 
-	LOADI 0
-	STORE DVel
-	JUMP InfLoop
+;Findhome
+;FindHome:
+;    LOADI 300
+;    STORE DVel
+;	CALL WAIT1
+;	LOAD Mask5
+;	OUT SONAREN	;PING TO THE RIGHT
+;	CALL WAIT1
+;	IN Dist5
+;	OUT SSEG1
+;	STORE RightDist
+	
+;forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
+;	CALL PingRight
+;	IN Dist5
+;	STORE currPing
+;	OUT SSEG1
+;	SUB RightDist
+;	ADD 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
+;	OUT SSEG2
+;	JNEG EXIT2
+;	JUMP forNow1
+;EXIT2:						;this is the state to drive foward to get into the HOME area
+;	LOADI 0
+;	STORE Dvel										;**********************************not sure why we need to stop
+;	CALL WAIT1 ; prepare for velocity changed
+;	LOADI  300 ; foward
+;	STORE DVel ;GO!
+;	LOADI 0
+;	STORE State1Checker
+	
+;checkState1:
+;	LOAD State1Checker
+;	OUT SSEG2										; print 0 = right before getting home.
+;	ADDI -30 ; EDIT VALuE AS NECeSSARY For MOVE
+;	JPOS checkStateEnd1
+;	JUMP checkState1
+
+;checkStateEnd1:
+;	LOADI 0
+;	STORE DVel
+;	JUMP InfLoop
 
 
 

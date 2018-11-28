@@ -101,7 +101,10 @@ FindHome:
 	STORE RightDist
 	
 forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
-	CALL PingRight
+	CALL WAIT1
+    LOAD Mask5
+    OUT SONAREN	;PING TO THE RIGHT
+    CALL WAIT1
 	IN Dist5
 	STORE currPing
 	OUT SSEG1
@@ -110,6 +113,7 @@ forNow1:						;this is where gettig the distance to recognize the pillar near th
 	OUT SSEG2
 	JNEG EXIT2
 	JUMP forNow1
+
 EXIT2:						;this is the state to drive foward to get into the HOME area
 	LOADI 0
 	STORE Dvel										;**********************************not sure why we need to stop

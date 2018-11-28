@@ -70,17 +70,17 @@ Main:
 	OUT    CTIMER      ; turn on timer peripheral
 	
 	;;;; Demo code to acquire sonar data during a rotation
-	CLI    &B0010      ; disable the movement API interrupt
-	CALL   AcquireData ; perform a 360 degree scan
+	;CLI    &B0010      ; disable the movement API interrupt
+	;CALL   AcquireData ; perform a 360 degree scan
 	
 	;;;; Demo code to turn to face the closest object seen
 	; Before enabling the movement control code, set it to
 	; not start moving immediately.
-	LOADI  0
-	STORE  DVel        ; zero desired forward velocity
-	IN     THETA
-	STORE  DTheta      ; desired heading = current heading
-	SEI    &B0010      ; enable interrupts from source 2 (timer)
+	;LOADI  0
+	;STORE  DVel        ; zero desired forward velocity
+	;IN     THETA
+	;STORE  DTheta      ; desired heading = current heading
+	;SEI    &B0010      ; enable interrupts from source 2 (timer)
 	; at this point, timer interrupts will be firing at 10Hz, and
 	; code in that ISR will attempt to control the robot.
 	; If you want to take manual control of the robot,
@@ -124,14 +124,11 @@ checkState1:
 	ADDI -30 ; EDIT VALuE AS NECeSSARY For MOVE
 	JPOS checkStateEnd1
 	JUMP checkState1
-	
+
 checkStateEnd1: 
 	LOADI 0
 	STORE DVel
 	JUMP InfLoop
-	
-
-
 
 
 

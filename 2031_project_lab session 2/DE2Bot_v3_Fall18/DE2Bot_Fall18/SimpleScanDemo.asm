@@ -90,7 +90,9 @@ Main:
 
 
 ;Findhome
-FindHome: 
+FindHome:
+    LOADI 300
+    STORE DVel
 	CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN	;PING TO THE RIGHT

@@ -155,25 +155,25 @@ CONTENT
            08E : 10B1;  -- 	STORE currPing
            08F : 9804;  -- 	OUT SSEG1
            090 : 20B0;  -- 	SUB RightDist
-           091 : 18FA;  -- 	ADD 250
+           091 : 18FA;  -- 	ADD 250					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
            092 : 9805;  -- 	OUT SSEG2
            093 : 3095;  -- 	JNEG EXIT2
            094 : 288C;  -- 	JUMP forNow1	
            095 : B800;  -- 	LOADI 0
-           096 : 1108;  -- 	STORE Dvel
+           096 : 1108;  -- 	STORE Dvel										;**********************************not sure why we need to stop
            097 : 825F;  -- 	CALL WAIT1 ; prepare for velocity changed
-           098 : B92C;  -- 	LOADI  300 ; reverse
+           098 : B92C;  -- 	LOADI  300 ; foward
            099 : 1108;  -- 	STORE DVel ;GO!
            09A : B800;  -- 	LOADI 0
            09B : 12C2;  -- 	STORE State1Checker
-           09C : 0AC2;  -- checkState1:	LOAD State1Checker
-           09D : 9805;  -- 			OUT SSEG2
-           09E : 6FD8;  -- 			ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
-           09F : 38A1;  -- 			JPOS checkStateEnd1
-           0A0 : 289C;  -- 			JUMP checkState1
-           0A1 : 0A9B;  -- checkStateEnd1: LOAD Zero
-           0A2 : 1108;  -- 			   STORE DVel
-           0A3 : 28A4;  -- 			   JUMP InfLoop
+           09C : 0AC2;  -- 	LOAD State1Checker
+           09D : 9805;  -- 	OUT SSEG2										; print 0 = right before getting home.
+           09E : 6FD8;  -- 	ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
+           09F : 38A1;  -- 	JPOS checkStateEnd1
+           0A0 : 289C;  -- 	JUMP checkState1
+           0A1 : 0A9B;  -- 	LOAD Zero
+           0A2 : 1108;  -- 	STORE DVel
+           0A3 : 28A4;  -- 	JUMP InfLoop
            0A4 : 28A4;  -- 	JUMP   InfLoop
            0A5 : 0AA6;  -- 	LOAD Mask0
            0A6 : 98B2;  -- 	OUT SONAREN

@@ -68,18 +68,18 @@ Main:
 	; configure timer interrupt for the movement control code
 	LOADI  10          ; period = (10 ms * 10) = 0.1s, or 10Hz.
 	OUT    CTIMER      ; turn on timer peripheral
-
+	
 	;;;; Demo code to acquire sonar data during a rotation
 	CLI    &B0010      ; disable the movement API interrupt
-	;CALL   AcquireData ; perform a 360 degree scan
-
+	CALL   AcquireData ; perform a 360 degree scan
+	
 	;;;; Demo code to turn to face the closest object seen
 	; Before enabling the movement control code, set it to
 	; not start moving immediately.
-	;LOADI  0
-	;STORE  DVel        ; zero desired forward velocity
-	;IN     THETA
-	;STORE  DTheta      ; desired heading = current heading
+	LOADI  0
+	STORE  DVel        ; zero desired forward velocity
+	IN     THETA
+	STORE  DTheta      ; desired heading = current heading
 	SEI    &B0010      ; enable interrupts from source 2 (timer)
 	; at this point, timer interrupts will be firing at 10Hz, and
 	; code in that ISR will attempt to control the robot.
@@ -87,8 +87,6 @@ Main:
 	; execute CLI &B0010 to disable the timer interrupt.
 
 	; FindClosest returns the angle to the closest object
-<<<<<<< HEAD
-=======
 	CALL   FindClosest
 	OUT    SSEG2       ; useful debugging info
 	
@@ -146,11 +144,20 @@ forNow:
 	JNEG EXIT1
 	JUMP forNow
 	
-EXIT1:	LOADI 0
-	    STORE DVel   
+EXIT1:	
+	LOADI 0
+	STORE DVel   
 	    
 	CALL PingLeft
+	;testing
+	LOAD LeftDist
+	OUT SSEG1
+	;
 	CALL PingRight 
+	;testing
+	LOAD RightDist
+	OUT SSEG2
+	; 
 	LOAD LeftDist
 	ADD RightDist
 	STORE lrsum
@@ -190,150 +197,96 @@ SecondExit: LOADI 0
 	
 ;SUM IS BELOW 4000 milimeters 
 ;CASE2
->>>>>>> parent of 64cf887... use this one @kevin
 
-;Findhome
-FindHome:
+CASE2:
+	LOADI 194 ;C2 in hex
+	OUT SSEG1 ;Show that we're in C2
+	LOAD DTHETA ;spin around
+	ADDI -172 ;always overrotates -> should correct
+	STORE DTHETA ; face that direction
+	JUMP FindHome
 
-<<<<<<< HEAD
-    LOADI 300
-    STORE DVel
-=======
 ;CASE 3 - BETWEeN the leGS
-CASE3LEG: 
+CASE3LEG:
+	LOADI 195	;C3 in hex
+	OUT SSEG1	;show c3
+	CALL WAIT1
+	LOADI -300	
+	STORE DVel	;Move back
+	
+	LOAD DTHETA ;spin around
+	ADDI -90	;head to home
+	
 	CALL DIE ;automatically die if in case 3
 ;CASE 3 - SEES THE POST
 CASE3POST:
 	CALL DIE ;automatically die if in case 3
 ;Findhome	
 FindHome: 
->>>>>>> parent of 64cf887... use this one @kevin
 	CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN	;PING TO THE RIGHT
-	CALL WAIT1
 	IN Dist5
-	STORE RightDist
-<<<<<<< HEAD
-
-forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
-	CALL WAIT1
-    LOAD Mask5
-    OUT SONAREN	;PING TO THE RIGHT
-    CALL WAIT1
-	IN Dist5
-	STORE currPing
 	OUT SSEG1
-
-	SUB RightDist                               ;;look at here
-	JPOS ShiftRight ;shift right
-	ADDI 100
-	JNEG EXIT2                                   ;;recognize pillar
-    JUMP ShiftLeft                                 ;implementation of shift left   ;need to be implemented
-
-
-	;LOAD currPing
-	;SUB RightDist
-	;ADDI 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
-	;OUT SSEG2
-	;JNEG EXIT2
-	JUMP forNow1
-
-EXIT2:						;this is the state to drive foward to get into the HOME area
-=======
+	STORE RightDist
 	
-forNow1:	
+forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
 	CALL PingRight
 	IN Dist5
 	STORE currPing
 	OUT SSEG1
 	SUB RightDist
-	ADD 250
+	ADD 250					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
 	OUT SSEG2
 	JNEG EXIT2
 	JUMP forNow1	
-EXIT2:	
->>>>>>> parent of 64cf887... use this one @kevin
+EXIT2:						;this is the state to drive foward to get into the HOME area
 	LOADI 0
-	STORE Dvel
+	STORE Dvel										;**********************************not sure why we need to stop
 	CALL WAIT1 ; prepare for velocity changed
-	LOADI  300 ; reverse
+	LOADI  300 ; foward
 	STORE DVel ;GO!
 	LOADI 0
 	STORE State1Checker
-<<<<<<< HEAD
-
-checkState1:
+	
+checkState1:	
 	LOAD State1Checker
 	OUT SSEG2										; print 0 = right before getting home.
 	ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
 	JPOS checkStateEnd1
 	JUMP checkState1
-
-checkStateEnd1:
-	LOADI 0
+	
+checkStateEnd1: 
+	LOAD Zero
 	STORE DVel
 	JUMP InfLoop
-=======
-checkState1:	LOAD State1Checker
-			OUT SSEG2
-			ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
-			JPOS checkStateEnd1
-			JUMP checkState1
-checkStateEnd1: LOAD Zero
-			   STORE DVel
-			   JUMP InfLoop
 	
 
 
 
 
->>>>>>> parent of 64cf887... use this one @kevin
 
-InfLoop:
+InfLoop:                                 
 	JUMP   InfLoop
 	; note that the movement API will still be running during this
 	; infinite loop, because it uses the timer interrupt.
 PingLeft:
-	CALL WAIT1
+	;CALL WAIT1
 	LOAD Mask0
 	OUT SONAREN
-	CALL WAIT1
+	;CALL WAIT1
 	IN Dist0
 	STORE LeftDist
 	RETURN 
 	
 PingRight:
-	CALL WAIT1
+	;CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN
-	CALL WAIT1
+	;CALL WAIT1
 	IN Dist5
 	STORE RightDist
-	RETURN
-
-ShiftRight:
-    CALL WAIT1
-    LOAD Mask5
-    OUT SONAREN
-    CALL WAIT1
-    IN Dist5
-    LOADI 300
-    OUT RVELCMD
-    JUMP forNow1
-    ; compare value still greater, goto shiftright. if less than threshold, go to followwall
-
-ShiftLeft:
-    CALL WAIT1
-    LOAD Mask5
-    OUT SONAREN
-    CALL WAIT1
-    IN Dist5
-    LOADI 300
-    OUT RVELCMD
-    JUMP forNow1
-    ; compare value if less than, goto shiftleft. if less than threshold, go to followwall
-    ; if significantly less than (pillar) do findhome
+	RETURN 
 		
 LeftDist:	DW	0
 RightDist:	DW	0

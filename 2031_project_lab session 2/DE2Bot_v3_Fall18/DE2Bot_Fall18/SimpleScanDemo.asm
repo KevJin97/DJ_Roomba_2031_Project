@@ -70,7 +70,7 @@ Main:
 	OUT    CTIMER      ; turn on timer peripheral
 
 	;;;; Demo code to acquire sonar data during a rotation
-	;CLI    &B0010      ; disable the movement API interrupt
+	CLI    &B0010      ; disable the movement API interrupt
 	;CALL   AcquireData ; perform a 360 degree scan
 
 	;;;; Demo code to turn to face the closest object seen
@@ -80,7 +80,7 @@ Main:
 	;STORE  DVel        ; zero desired forward velocity
 	;IN     THETA
 	;STORE  DTheta      ; desired heading = current heading
-	;SEI    &B0010      ; enable interrupts from source 2 (timer)
+	SEI    &B0010      ; enable interrupts from source 2 (timer)
 	; at this point, timer interrupts will be firing at 10Hz, and
 	; code in that ISR will attempt to control the robot.
 	; If you want to take manual control of the robot,

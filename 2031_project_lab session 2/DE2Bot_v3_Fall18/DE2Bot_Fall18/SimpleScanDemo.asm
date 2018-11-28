@@ -149,15 +149,9 @@ EXIT1:
 	STORE DVel   
 	    
 	CALL PingLeft
-	;testing
-	LOAD LeftDist
-	OUT SSEG1
-	;
+
 	CALL PingRight 
-	;testing
-	LOAD RightDist
-	OUT SSEG2
-	; 
+
 	LOAD LeftDist
 	ADD RightDist
 	STORE lrsum
@@ -172,7 +166,7 @@ EXIT1:
 	JPOS CASE1			
 
 lrsum: DW	0
-legdist: DW 1000 ;FIGURe OUT DISTANCE BETWEEN LEGS IN DeSKS
+legdist: DW 2000 ;FIGURe OUT DISTANCE BETWEEN LEGS IN DeSKS
 discase: DW 4000
 case3val: DW 6000 ; DISTANCE BETWEEN CASE 1 PillaRS (PLEASE CheCK aCTUAL diSTANCE)
 CASE1: 
@@ -271,19 +265,19 @@ InfLoop:
 	; note that the movement API will still be running during this
 	; infinite loop, because it uses the timer interrupt.
 PingLeft:
-	;CALL WAIT1
+	CALL WAIT1
 	LOAD Mask0
 	OUT SONAREN
-	;CALL WAIT1
+	CALL WAIT1
 	IN Dist0
 	STORE LeftDist
 	RETURN 
 	
 PingRight:
-	;CALL WAIT1
+	CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN
-	;CALL WAIT1
+	CALL WAIT1
 	IN Dist5
 	STORE RightDist
 	RETURN 

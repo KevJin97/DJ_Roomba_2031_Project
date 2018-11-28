@@ -87,18 +87,134 @@ Main:
 	; execute CLI &B0010 to disable the timer interrupt.
 
 	; FindClosest returns the angle to the closest object
+<<<<<<< HEAD
+=======
+	CALL   FindClosest
+	OUT    SSEG2       ; useful debugging info
+	
+	; To turn to that angle using the movement API, just store
+	; the angle into the "desired theta" variable.
+		
+	STORE  DTheta ; look at closest reading 
+	CALL WAIT1 ; WAIT TO MAKE SURE VELOCITY RECORDS CHANGE
+	LOAD DTheta 
+	ADDI -8
+	STORE DTheta ; Add 8 degree offset to DTheta, seems to correct for most error 
+	
+	CALL WAIT1 ; prepare for velocity changed
+	LOADI  -200 ; reverse
+	STORE DVel ;GO!
+	
+	LOADI 0
+	STORE State1Checker
+	
+checkState:	LOAD State1Checker
+			OUT SSEG2
+			ADDI -40
+			JPOS checkStateEnd
+			JUMP checkState
+checkStateEnd: LOAD Zero
+			   STORE DVel
+			   CALL WAIT1	
+anotherRound:
+	CALL WAIT1	   
+	AND 0
+	CLI    &B0010 
+	CALL   AcquireData 
+	LOADI  0
+	STORE  DVel
+	IN     THETA
+	STORE  DTheta 
+	SEI    &B0010
+	CALL FindClosest
+	STORE DTheta
+	CALL WAIT1
+	LOAD DTheta 
+	ADDI -8
+	STORE DTheta
+	
+	
+moveFoward:
+	AND 0
+	LOADI 300
+	STORE DVel
+	LOAD Mask3
+	OUT SONAREN	
+forNow:	
+	IN Dist3
+	ADDI -300
+	JNEG EXIT1
+	JUMP forNow
+	
+EXIT1:	LOADI 0
+	    STORE DVel   
+	    
+	CALL PingLeft
+	CALL PingRight 
+	LOAD LeftDist
+	ADD RightDist
+	STORE lrsum
+	SUB legdist ; will figure out later
+	JNEG CASE3LEG
+	LOAD lrsum
+	SUB case3val
+	JPOS CASE3POST
+	LOAD lrsum
+	SUB discase
+	JNEG CASE2
+	JPOS CASE1			
+
+lrsum: DW	0
+legdist: DW 1000 ;FIGURe OUT DISTANCE BETWEEN LEGS IN DeSKS
+discase: DW 4000
+case3val: DW 6000 ; DISTANCE BETWEEN CASE 1 PillaRS (PLEASE CheCK aCTUAL diSTANCE)
+CASE1: 
+	LOADI 193 ;C1 in hex
+	OUT SSEG1 ;Show that we're in C1
+	CALL WAIT1
+	LOADI -300
+	STORE DVel
+	LOADI 0
+	STORE State1Checker
+SecondMove: 
+	LOAD State1Checker
+	ADDI -60  
+	JPOS SecondExit
+	JUMP SecondMove
+SecondExit: LOADI 0
+			STORE DVel 
+			LOAD DTheta
+			ADDI 90
+			STORE DTheta
+			JUMP FindHome
+	
+;SUM IS BELOW 4000 milimeters 
+;CASE2
+>>>>>>> parent of 64cf887... use this one @kevin
 
 ;Findhome
 FindHome:
 
+<<<<<<< HEAD
     LOADI 300
     STORE DVel
+=======
+;CASE 3 - BETWEeN the leGS
+CASE3LEG: 
+	CALL DIE ;automatically die if in case 3
+;CASE 3 - SEES THE POST
+CASE3POST:
+	CALL DIE ;automatically die if in case 3
+;Findhome	
+FindHome: 
+>>>>>>> parent of 64cf887... use this one @kevin
 	CALL WAIT1
 	LOAD Mask5
 	OUT SONAREN	;PING TO THE RIGHT
 	CALL WAIT1
 	IN Dist5
 	STORE RightDist
+<<<<<<< HEAD
 
 forNow1:						;this is where gettig the distance to recognize the pillar near the home destination
 	CALL WAIT1
@@ -124,13 +240,28 @@ forNow1:						;this is where gettig the distance to recognize the pillar near th
 	JUMP forNow1
 
 EXIT2:						;this is the state to drive foward to get into the HOME area
+=======
+	
+forNow1:	
+	CALL PingRight
+	IN Dist5
+	STORE currPing
+	OUT SSEG1
+	SUB RightDist
+	ADD 250
+	OUT SSEG2
+	JNEG EXIT2
+	JUMP forNow1	
+EXIT2:	
+>>>>>>> parent of 64cf887... use this one @kevin
 	LOADI 0
-	STORE Dvel										;**********************************not sure why we need to stop
+	STORE Dvel
 	CALL WAIT1 ; prepare for velocity changed
-	LOADI  300 ; foward
+	LOADI  300 ; reverse
 	STORE DVel ;GO!
 	LOADI 0
 	STORE State1Checker
+<<<<<<< HEAD
 
 checkState1:
 	LOAD State1Checker
@@ -143,6 +274,21 @@ checkStateEnd1:
 	LOADI 0
 	STORE DVel
 	JUMP InfLoop
+=======
+checkState1:	LOAD State1Checker
+			OUT SSEG2
+			ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
+			JPOS checkStateEnd1
+			JUMP checkState1
+checkStateEnd1: LOAD Zero
+			   STORE DVel
+			   JUMP InfLoop
+	
+
+
+
+
+>>>>>>> parent of 64cf887... use this one @kevin
 
 InfLoop:
 	JUMP   InfLoop

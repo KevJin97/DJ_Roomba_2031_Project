@@ -110,14 +110,17 @@ forNow1:						;this is where gettig the distance to recognize the pillar near th
 	OUT SSEG1
 
 	SUB RightDist                               ;;look at here
-	;JPOS ;shift right
-	;otherwise shift left
+	;JPOS ;shift right      ;need to be implemented
+	ADDI 100
+	JNEG EXIT2                                   ;;recognize pillar
+    ;implementation of shift left   ;need to be implemented
 
-	LOAD currPing
-	SUB RightDist
-	ADDI 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
-	OUT SSEG2
-	JNEG EXIT2
+
+	;LOAD currPing
+	;SUB RightDist
+	;ADDI 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
+	;OUT SSEG2
+	;JNEG EXIT2
 	JUMP forNow1
 
 EXIT2:						;this is the state to drive foward to get into the HOME area

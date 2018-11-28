@@ -90,8 +90,7 @@ Main:
 
 ;Findhome
 FindHome:
-    LOADI 15
-    STORE DTheta
+
     LOADI 300
     STORE DVel
 	CALL WAIT1
@@ -109,6 +108,12 @@ forNow1:						;this is where gettig the distance to recognize the pillar near th
 	IN Dist5
 	STORE currPing
 	OUT SSEG1
+
+	SUB RightDist                               ;;look at here
+	;JPOS ;shift right
+	;otherwise shift left
+
+	LOAD currPing
 	SUB RightDist
 	ADDI 100					;**************************need to check if it is enough distance to recognize pillr and the wall or double check the distance
 	OUT SSEG2

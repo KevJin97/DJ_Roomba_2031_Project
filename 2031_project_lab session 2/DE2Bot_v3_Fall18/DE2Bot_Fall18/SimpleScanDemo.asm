@@ -90,6 +90,8 @@ Main:
 
 ;Findhome
 FindHome:
+    LOADI 15
+    STORE DTheta
     LOADI 300
     STORE DVel
 	CALL WAIT1
@@ -125,7 +127,7 @@ EXIT2:						;this is the state to drive foward to get into the HOME area
 checkState1:
 	LOAD State1Checker
 	OUT SSEG2										; print 0 = right before getting home.
-	ADDI -30 ; EDIT VALuE AS NECeSSARY For MOVE
+	ADDI -40 ; EDIT VALuE AS NECeSSARY For MOVE
 	JPOS checkStateEnd1
 	JUMP checkState1
 

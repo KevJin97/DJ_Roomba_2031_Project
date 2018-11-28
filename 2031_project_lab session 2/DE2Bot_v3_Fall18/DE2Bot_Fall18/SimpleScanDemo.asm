@@ -110,10 +110,10 @@ forNow1:						;this is where gettig the distance to recognize the pillar near th
 	OUT SSEG1
 
 	SUB RightDist                               ;;look at here
-	;JPOS ;shift right      ;need to be implemented
+	JPOS ShiftRight ;shift right
 	ADDI 100
 	JNEG EXIT2                                   ;;recognize pillar
-    ;implementation of shift left   ;need to be implemented
+    JUMP ShiftLeft                                 ;implementation of shift left   ;need to be implemented
 
 
 	;LOAD currPing
@@ -164,7 +164,30 @@ PingRight:
 	CALL WAIT1
 	IN Dist5
 	STORE RightDist
-	RETURN 
+	RETURN
+
+ShiftRight:
+    CALL WAIT1
+    LOAD Mask5
+    OUT SONAREN
+    CALL WAIT1
+    IN Dist5
+    LOADI 300
+    OUT RVELCMD
+    JUMP forNow1
+    ; compare value still greater, goto shiftright. if less than threshold, go to followwall
+
+ShiftLeft:
+    CALL WAIT1
+    LOAD Mask5
+    OUT SONAREN
+    CALL WAIT1
+    IN Dist5
+    LOADI 300
+    OUT RVELCMD
+    JUMP forNow1
+    ; compare value if less than, goto shiftleft. if less than threshold, go to followwall
+    ; if significantly less than (pillar) do findhome
 		
 LeftDist:	DW	0
 RightDist:	DW	0

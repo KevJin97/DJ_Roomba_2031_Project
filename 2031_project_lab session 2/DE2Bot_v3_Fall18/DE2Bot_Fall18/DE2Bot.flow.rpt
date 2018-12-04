@@ -1,5 +1,5 @@
 Flow report for DE2Bot
-Wed Nov 14 20:40:30 2018
+Wed Nov 28 18:06:54 2018
 Quartus II Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
 
 
@@ -38,16 +38,16 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Flow Summary                                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Flow Status                        ; Successful - Wed Nov 14 20:40:30 2018         ;
-; Quartus II 64-Bit Version          ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
+; Flow Status                        ; Successful - Wed Nov 28 18:06:53 2018         ;
+; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
 ; Revision Name                      ; DE2Bot                                        ;
 ; Top-level Entity Name              ; DE2bot                                        ;
 ; Family                             ; Cyclone II                                    ;
 ; Device                             ; EP2C35F672C6                                  ;
 ; Timing Models                      ; Final                                         ;
 ; Met timing requirements            ; No                                            ;
-; Total logic elements               ; 5,609 / 33,216 ( 17 % )                       ;
-;     Total combinational functions  ; 5,014 / 33,216 ( 15 % )                       ;
+; Total logic elements               ; 5,577 / 33,216 ( 17 % )                       ;
+;     Total combinational functions  ; 5,012 / 33,216 ( 15 % )                       ;
 ;     Dedicated logic registers      ; 2,279 / 33,216 ( 7 % )                        ;
 ; Total registers                    ; 2279                                          ;
 ; Total pins                         ; 182 / 475 ( 38 % )                            ;
@@ -55,7 +55,6 @@ applicable agreement for further details.
 ; Total memory bits                  ; 107,264 / 483,840 ( 22 % )                    ;
 ; Embedded Multiplier 9-bit elements ; 42 / 70 ( 60 % )                              ;
 ; Total PLLs                         ; 2 / 4 ( 50 % )                                ;
-; Quartus II Version                 ; 9.1 Build 350 03/24/2010 SP 2 SJ Full Version ;
 +------------------------------------+-----------------------------------------------+
 
 
@@ -64,7 +63,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 11/07/2018 20:14:08 ;
+; Start date & time ; 11/28/2018 05:31:10 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; DE2Bot              ;
 +-------------------+---------------------+
@@ -75,7 +74,7 @@ applicable agreement for further details.
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                          ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+--------------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 26830026489485.154163964807096 ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 26830026489985.154340106902560 ; --            ; --          ; --             ;
 ; ENABLE_CLOCK_LATENCY                ; On                             ; Off           ; --          ; --             ;
 ; IP_TOOL_NAME                        ; LPM_FF                         ; --            ; --          ; --             ;
 ; IP_TOOL_VERSION                     ; 9.1                            ; --            ; --          ; --             ;
@@ -98,97 +97,31 @@ applicable agreement for further details.
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name             ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis    ; 00:00:26     ; 1.0                     ; 445 MB              ; 00:00:20                           ;
-; Fitter                  ; 00:00:24     ; 2.8                     ; 498 MB              ; 00:00:36                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 353 MB              ; 00:00:02                           ;
-; Classic Timing Analyzer ; 00:00:04     ; 1.0                     ; 319 MB              ; 00:00:03                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 336 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 355 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:03     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:06     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:08     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:05     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:05     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:07     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
+; Analysis & Synthesis    ; 00:00:57     ; 1.0                     ; 326 MB              ; 00:00:24                           ;
+; Fitter                  ; 00:00:25     ; 2.0                     ; 381 MB              ; 00:00:37                           ;
+; Assembler               ; 00:00:03     ; 1.0                     ; 290 MB              ; 00:00:02                           ;
+; Classic Timing Analyzer ; 00:00:04     ; 1.0                     ; 238 MB              ; 00:00:03                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:03     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:03     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:01     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 262 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:04     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 263 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:05     ; 1.0                     ; 296 MB              ; 00:00:02                           ;
 ; MIF/HEX Update          ; 00:00:04     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
+; Assembler               ; 00:00:08     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
+; MIF/HEX Update          ; 00:00:07     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
 ; Assembler               ; 00:00:07     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:07     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:03     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:06     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:05     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; MIF/HEX Update          ; 00:00:02     ; 1.0                     ; 258 MB              ; 00:00:01                           ;
-; Assembler               ; 00:00:04     ; 1.0                     ; 292 MB              ; 00:00:02                           ;
-; Total                   ; 00:05:15     ; --                      ; --                  ; 00:03:10                           ;
+; Total                   ; 00:02:38     ; --                      ; --                  ; 00:01:36                           ;
 +-------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -197,96 +130,30 @@ applicable agreement for further details.
 +-------------------------+------------------+---------------+------------+----------------+
 ; Module Name             ; Machine Hostname ; OS Name       ; OS Version ; Processor type ;
 +-------------------------+------------------+---------------+------------+----------------+
-; Analysis & Synthesis    ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Fitter                  ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Classic Timing Analyzer ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB031       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; MIF/HEX Update          ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
-; Assembler               ; 2031LAB029       ; Windows Vista ; 6.2        ; x86_64         ;
+; Analysis & Synthesis    ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Fitter                  ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Classic Timing Analyzer ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB034       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB013       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB013       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB028       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB028       ; Windows Vista ; 6.2        ; x86_64         ;
+; MIF/HEX Update          ; 2031LAB028       ; Windows Vista ; 6.2        ; x86_64         ;
+; Assembler               ; 2031LAB028       ; Windows Vista ; 6.2        ; x86_64         ;
 +-------------------------+------------------+---------------+------------+----------------+
 
 
@@ -297,72 +164,6 @@ quartus_map --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
 quartus_fit --read_settings_files=off --write_settings_files=off DE2Bot -c DE2Bot
 quartus_asm --read_settings_files=off --write_settings_files=off DE2Bot -c DE2Bot
 quartus_tan --read_settings_files=off --write_settings_files=off DE2Bot -c DE2Bot --timing_analysis_only
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
-quartus_cdb DE2Bot -c DE2Bot --update_mif
-quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
 quartus_cdb DE2Bot -c DE2Bot --update_mif
 quartus_asm --read_settings_files=on --write_settings_files=off DE2Bot -c DE2Bot
 quartus_cdb DE2Bot -c DE2Bot --update_mif

@@ -240,13 +240,13 @@ CASE3LEG:
 	STORE State1Checker
 SecondMove1: 
 	LOAD State1Checker
-	ADDI -60  
+	ADDI -90  
 	JPOS SecondExit1
 	JUMP SecondMove1
 SecondExit1: LOADI 0
 			STORE DVel 
 			LOAD DTheta
-			ADDI -90
+			ADDI -110
 			STORE DTheta
 			JUMP FindHome
 	
@@ -263,7 +263,7 @@ CASE3POST:
 	STORE State1Checker
 SecondMove2: 
 	LOAD State1Checker
-	ADDI -45  
+	ADDI -80  
 	JPOS SecondExit1
 	JUMP SecondMove1
 SecondExit2: LOADI 0

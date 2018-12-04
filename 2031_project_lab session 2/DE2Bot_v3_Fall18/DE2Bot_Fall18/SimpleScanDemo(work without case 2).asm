@@ -206,27 +206,6 @@ CASE2:
 	STORE DTHETA ; face that direction
 	
 	
-	
-	CALL WAIT1
-	LOADI 300
-	STORE DVel
-	LOADI 0
-	STORE State1Checker
-SecondMove0: 
-	LOAD State1Checker
-	ADDI -20  
-	JPOS SecondExit0
-	JUMP SecondMove0
-SecondExit0: LOADI 0
-			STORE DVel
-	
-	
-	
-	
-	
-	
-	
-	
 	JUMP FindHome
 
 ;CASE 3 - BETWEeN the leGS
@@ -240,13 +219,13 @@ CASE3LEG:
 	STORE State1Checker
 SecondMove1: 
 	LOAD State1Checker
-	ADDI -60  
+	ADDI -90  
 	JPOS SecondExit1
 	JUMP SecondMove1
 SecondExit1: LOADI 0
 			STORE DVel 
 			LOAD DTheta
-			ADDI -90
+			ADDI -110
 			STORE DTheta
 			JUMP FindHome
 	
@@ -263,7 +242,7 @@ CASE3POST:
 	STORE State1Checker
 SecondMove2: 
 	LOAD State1Checker
-	ADDI -45  
+	ADDI -80  
 	JPOS SecondExit1
 	JUMP SecondMove1
 SecondExit2: LOADI 0
@@ -376,13 +355,13 @@ AcquireData:
 	LOAD   Mask0
 	OUT    SONAREN
 	; stop the left motor
+	LOAD   Zero
+	OUT    LVELCMD
 		
 ADWait:
 	; turn the robot, using the right wheel only
 	LOAD   FSlow
 	OUT    RVELCMD
-	LOAD   RSlow
-	OUT    LVELCMD
 	; wait until turned to a new angle
 	IN     Theta
 	XOR    CurrTheta
